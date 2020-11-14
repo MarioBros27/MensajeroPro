@@ -73,7 +73,7 @@ public class Httper {
 //        System.out.println("token" + token);
 
         //Update ip
-        String ip = "hola";
+        String ip = Util.getMyIP();
         Map<Object, Object> data2 = new HashMap<>();
         data2.put("last_ip", ip);
         String requestBody2 = objectMapper
