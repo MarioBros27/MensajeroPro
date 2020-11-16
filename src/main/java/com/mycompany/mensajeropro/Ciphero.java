@@ -37,28 +37,19 @@ public class Ciphero {
         byte[] realKey = key.toByteArray();
         byte[] finalKey = new byte[8];
 
-        System.out.println("Size of key in bits: " + key.bitLength());
-        System.out.println("Size of key array: " + realKey.length);
         int c = 0;
         for (int i = 8 - realKey.length; i < 8; i++) {
             finalKey[i] = realKey[c];
             c++;
         }
-        System.out.println("Key Real Key: " + Arrays.toString(realKey));
-        System.out.println("Key FinalKey: " + Arrays.toString(finalKey));
         DESKeySpec dks = new DESKeySpec(finalKey);
 
-        System.out.println("Key DESKeySpec: " + Arrays.toString(dks.getKey()));
-
-        System.out.println("Size of DESkey array: " + dks.getKey().length);
 
         SecretKeyFactory factory = SecretKeyFactory.getInstance("DES");
         Key secretKey = factory.generateSecret(dks);
         javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance("DES/ECB/NoPadding");
         cipher.init(javax.crypto.Cipher.DECRYPT_MODE, secretKey);
         de = cipher.doFinal(packet);
-        System.out.println("packet cnrypted-> Size "+packet.length+" array: "+Arrays.toString(packet));
-        System.out.println("Packet decrypted-> Size "+de.length + " array: " +Arrays.toString(de));
         return de;
     }
 
@@ -68,28 +59,19 @@ public class Ciphero {
         byte[] realKey = key.toByteArray();
         byte[] finalKey = new byte[8];
 
-        System.out.println("Size of key in bits: " + key.bitLength());
-        System.out.println("Size of key array: " + realKey.length);
         int c = 0;
         for (int i = 8 - realKey.length; i < 8; i++) {
             finalKey[i] = realKey[c];
             c++;
         }
-        System.out.println("Key Real Key: " + Arrays.toString(realKey));
-        System.out.println("Key FinalKey: " + Arrays.toString(finalKey));
         DESKeySpec dks = new DESKeySpec(finalKey);
-
-        System.out.println("Key DESKeySpec: " + Arrays.toString(dks.getKey()));
-
-        System.out.println("Size of DESkey array: " + dks.getKey().length);
 
         SecretKeyFactory factory = SecretKeyFactory.getInstance("DES");
         Key secretKey = factory.generateSecret(dks);
         javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance("DES/ECB/NoPadding");
         cipher.init(javax.crypto.Cipher.ENCRYPT_MODE, secretKey);
         de = cipher.doFinal(packet);
-        System.out.println("packet not ecnrypted-> Size "+packet.length+" array: "+Arrays.toString(packet));
-        System.out.println("Packet encrypted-> Size "+de.length + " array: " +Arrays.toString(de));
+
         return de;
     }
 
@@ -101,7 +83,6 @@ public class Ciphero {
         if (x.compareTo(q) >= 0) {
             x = x.mod(q);
         }
-        System.out.println("Q: " + q + "X: " + x);
         BigInteger y = a.modPow(x, q);
         list.add(x);
         list.add(y);
@@ -116,7 +97,6 @@ public class Ciphero {
         if (x.compareTo(q) >= 0) {
             x = x.mod(q);
         }
-        System.out.println("Q: " + q + "X: " + x);
         BigInteger myY = a.modPow(x, q);
         BigInteger myKey = y.modPow(x, q);
         list.add(myY);

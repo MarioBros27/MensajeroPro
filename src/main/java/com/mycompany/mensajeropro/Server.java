@@ -36,8 +36,6 @@ public class Server {
 
     String q = "2426697107";
     String a = "17123207";
-//    BigInteger q;
-//    BigInteger a;
     String myY;
 
 //    BigInteger yourY;
@@ -96,7 +94,6 @@ public class Server {
                 List<BigInteger> credentials = Ciphero.gimmemyKeys(new BigInteger(qValue), new BigInteger(aValue), new BigInteger(yValue));
                 myY = credentials.get(0).toString();
                 key = credentials.get(1);
-                System.out.println("My key is: "+key.toString());
                 return true;
 
             } else {
@@ -224,7 +221,6 @@ public class Server {
                     BigInteger yB = new BigInteger(yValue);
 
                     key = yB.modPow(myX, new BigInteger(q));
-                    System.out.println("My key is: "+key.toString());
                     return true;
 
                 } else {
@@ -255,7 +251,6 @@ public class Server {
             
             if (encrypted) {
                 byte[] encryptedText = Ciphero.encipher(key, arr);
-                System.out.println("sendMessage from server text: " + Arrays.toString(encryptedText));
                 dout.write(encryptedText, 0, 256);
             } else {
                 dout.write(arr, 0, 256);;

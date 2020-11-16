@@ -41,7 +41,6 @@ public class Util {
         int off = 20;
         String message = "";
         int size = messageIn[9] & 255;
-        System.out.println("Size:" + size);
         for (int c = off; c < off + size && c < 235; c++) {
             message = message + (char) messageIn[c];
         }
@@ -64,8 +63,6 @@ public class Util {
             } catch (NoSuchAlgorithmException e) {
                 System.out.println("Exception thrown for incorrect algorithm: " + e);
             }
-            System.out.println("SHA1 inMssg: " + toHexString(macInMessage));
-            System.out.println("SHA1 toComp: " + toHexString(macToCompare));
             if (!Arrays.equals(macInMessage, macToCompare) && macInMessage != null) {
                 return "";
             }
@@ -147,7 +144,6 @@ public class Util {
 
             try {
                 mc = SHA1(data);
-                //System.out.println("SHA1: " + toHexString(mc));
                 for (int c = 236; c < 256; c++) {
                     arr[c] = mc[c - 236];
                 }

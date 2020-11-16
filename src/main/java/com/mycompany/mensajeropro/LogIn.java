@@ -122,8 +122,6 @@ public class LogIn extends javax.swing.JFrame {
         }
         try {
             ht.logIn(email.getText(), password.getText());
-            String ip = ht.getIp("albertoaguilar8@gmail.com");
-            System.out.println(ip);
 
         } catch (WrongCredentials ex) {
             error.setText("Wrong credentials");

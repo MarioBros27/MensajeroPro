@@ -187,6 +187,7 @@ public class Window extends javax.swing.JFrame {
             } else if (emailMatcher.matches()) {
                 try {
                     destIP = ht.getIp(destIP);
+                    System.out.println(destIP);
                 } catch (Exception ex) {
                     appendS("Didn't find such email", Color.RED, true);
                     Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);

@@ -60,20 +60,17 @@ public class Httper {
         } else if (response.statusCode() != 200) {
             throw new Exception();
         }
-        // print status code
-//        System.out.println(response.statusCode());
-        // print response body
-//        System.out.println(response.body());
 
         JsonNode jsonNode = objectMapper.readTree(response.body());
 
         String id = jsonNode.get("ownerId").asText();
-//        System.out.println("id:" + id);
         token = jsonNode.get("user-token").asText();
-//        System.out.println("token" + token);
 
         //Update ip
         String ip = Util.getMyIP();
+        ip = ip.substring(1, ip.length());
+        System.out.println("ip to send"+ ip);
+                
         Map<Object, Object> data2 = new HashMap<>();
         data2.put("last_ip", ip);
         String requestBody2 = objectMapper
@@ -88,10 +85,6 @@ public class Httper {
                 .build();
 
         HttpResponse<String> response2 = httpClient.send(request2, HttpResponse.BodyHandlers.ofString());
-        // print status code
-//        System.out.println(response2.statusCode());
-        // print response body
-//        System.out.println(response2.body());
         if (response2.statusCode() != 200) {
             throw new Exception();
         }
@@ -113,10 +106,6 @@ public class Httper {
         if (response.statusCode() != 200) {
             throw new Exception();
         }
-        // print status code
-//        System.out.println(response.statusCode());
-        // print response body
-//        System.out.println(response.body());
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(response.body());
         
