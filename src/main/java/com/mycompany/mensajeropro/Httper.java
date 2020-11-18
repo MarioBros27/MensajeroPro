@@ -69,7 +69,6 @@ public class Httper {
         //Update ip
         String ip = Util.getMyIP();
         ip = ip.substring(1, ip.length());
-        System.out.println("ip to send"+ ip);
                 
         Map<Object, Object> data2 = new HashMap<>();
         data2.put("last_ip", ip);

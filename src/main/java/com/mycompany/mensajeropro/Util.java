@@ -88,9 +88,7 @@ public class Util {
                 break;
             }
             returnS = returnS + arr[c];
-            System.out.println(c);
         }
-        System.out.println("@getHellman->" + value + ": " + returnS);
         return returnS;
 
     }
